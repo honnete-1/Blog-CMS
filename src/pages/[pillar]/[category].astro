@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { pillar: 'spiritual-growth', category: 'christian-lifestyle' }, props: { name: 'Christian Lifestyle', desc: 'Living out your faith daily.' } },
+    { params: { pillar: 'spiritual-growth', category: 'sins-to-abhor' }, props: { name: 'Sins to Abhor', desc: 'Pursuing holiness.' } },
+    { params: { pillar: 'spiritual-growth', category: 'gods-love' }, props: { name: "God's Love", desc: 'Basking in grace.' } },
+    { params: { pillar: 'physical-stewardship', category: 'nutrition' }, props: { name: 'Nutrition', desc: 'Fueling the temple.' } },
+    { params: { pillar: 'physical-stewardship', category: 'fitness' }, props: { name: 'Fitness', desc: 'Strengthening the body.' } },
+    { params: { pillar: 'physical-stewardship', category: 'rest' }, props: { name: 'Rest', desc: 'The discipline of Sabbath.' } },
+    { params: { pillar: 'academic-growth', category: 'learning' }, props: { name: 'Continuous Learning', desc: 'Expanding the mind.' } },
+    { params: { pillar: 'academic-growth', category: 'focus' }, props: { name: 'Focus & Discipline', desc: 'Scholastic excellence.' } },
+    { params: { pillar: 'mental-growth', category: 'mindfulness' }, props: { name: 'Mindfulness', desc: 'Cultivating peace.' } },
+    { params: { pillar: 'mental-growth', category: 'resilience' }, props: { name: 'Resilience', desc: 'Overcoming adversity.' } },
+    { params: { pillar: 'mental-growth', category: 'relationships' }, props: { name: 'Relationships', desc: 'Healthy social bonds.' } },
+    { params: { pillar: 'financial-growth', category: 'stewardship' }, props: { name: 'Biblical Stewardship', desc: 'Managing resources wisely.' } },
+    { params: { pillar: 'financial-growth', category: 'planning' }, props: { name: 'Financial Planning', desc: 'Building wealth with purpose.' } },
+  ];
+}
+
+const { pillar, category } = Astro.params;
+const { name, desc } = Astro.props;
+
+// Mock posts for the category
+const categoryPosts = [
+  {
+    title: `Understanding ${name}`,
+    excerpt: `An introductory guide to ${desc.toLowerCase()} Let this serve as the foundation for your ongoing journey here.`,
+    url: `/${pillar}/${category}/introduction-guide`,
+    category: name,
+    date: "August 25, 2026"
+  }
+];
+---
+
+<BaseLayout title={name} description={desc}>
+  <div class="category-header text-center fade-in">
+    <div class="container">
+      <span class="pillar-breadcrumb">{pillar.replace('-', ' ').toUpperCase()}</span>
+      <h1>{name}</h1>
+      <p class="category-desc">{desc}</p>
+    </div>
+  </div>
+
+  <div class="container main-content">
+    <div class="posts-grid">
+      {categoryPosts.map((post, index) => (
+        <div class="fade-in" style={`animation-delay: ${index * 0.15}s;`}>
+          <PostCard {...post} />
+        </div>
+      ))}
+    </div>
+    
+    {categoryPosts.length === 0 && (
+      <div class="empty-state text-center fade-in">
+        <p>No discoveries posted here yet. Check back soon for new insights.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .category-header {
+    background-color: var(--color-background);
+    padding: 5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    margin-bottom: 4rem;
+  }
+  
+  .pillar-breadcrumb {
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .category-header h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  
+  .category-desc {
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .main-content {
+    padding-bottom: 6rem;
+    min-height: 40vh;
+  }
+  
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+  }
+  
+  .empty-state {
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: var(--border-radius-md);
+    border: 1px dashed rgba(0,0,0,0.1);
+    color: var(--color-text-muted);
+  }
+</style>

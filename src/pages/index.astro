@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import GrowthPillars from '../components/GrowthPillars.astro';
+import PostCard from '../components/PostCard.astro';
+import Sidebar from '../components/Sidebar.astro';
+
+// Mock recent posts representing a mix of pillars
+const recentPosts = [
+  {
+    title: "Finding Stillness in a Noisy World",
+    excerpt: "Practical steps to cultivate mental resilience and spiritual peace when everything around you demands attention. An exploration into mindful living rooted in timeless wisdom.",
+    url: "/mental-growth/mindfulness/finding-stillness",
+    category: "Mental Growth",
+    date: "August 15, 2026"
+  },
+  {
+    title: "Honoring Your Temple: Nutrition Basics",
+    excerpt: "A holistic look into how what we eat impacts not just our physical wellness, but our mental clarity and spiritual readiness for the day.",
+    url: "/physical-stewardship/nutrition/basics",
+    category: "Physical Stewardship",
+    date: "August 12, 2026"
+  },
+  {
+    title: "The Discipline of Deep Work",
+    excerpt: "Enhance your academic and professional endeavors by learning the art of deep, undistracted focus. God honors diligence in our studies.",
+    url: "/academic-growth/focus/deep-work",
+    category: "Academic Growth",
+    date: "August 05, 2026"
+  }
+];
+---
+
+<BaseLayout 
+  title="Home" 
+  description="The Curious Explorer - A Holistic Journey of Personal Growth across Spiritual, Physical, Academic, Mental, and Financial pillars."
+>
+  <Hero />
+  <GrowthPillars />
+  
+  <section class="home-content container">
+    <div class="main-column">
+      <div class="section-title fade-in">
+        <h2>Recent Discoveries</h2>
+        <div class="title-underline"></div>
+      </div>
+      
+      <div class="posts-list">
+        {recentPosts.map((post, index) => (
+          <div class="fade-in" style={`animation-delay: ${index * 0.15}s;`}>
+            <PostCard {...post} />
+          </div>
+        ))}
+      </div>
+      
+      <div class="view-all-wrapper fade-in" style="animation-delay: 0.6s;">
+        <a href="#pillars" class="view-all-btn">Browse By Pillar</a>
+      </div>
+    </div>
+    
+    <div class="sidebar-column fade-in" style="animation-delay: 0.3s;">
+      <div class="sticky-sidebar">
+        <Sidebar />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .home-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    padding: 2rem 1rem 6rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    margin-bottom: 3rem;
+  }
+  
+  .section-title h2 {
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+  }
+  
+  .title-underline {
+    height: 4px;
+    width: 60px;
+    background-color: var(--color-secondary);
+    border-radius: 2px;
+  }
+  
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  
+  .sticky-sidebar {
+    position: sticky;
+    top: 100px; /* Offset for sticky header */
+  }
+
+  .view-all-wrapper {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .view-all-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all var(--transition-speed) ease;
+  }
+
+  .view-all-btn:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-hover);
+  }
+  
+  @media (max-width: 900px) {
+    .home-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .sticky-sidebar {
+      position: static;
+    }
+  }
+</style>

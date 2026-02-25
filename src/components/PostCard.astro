@@ -1,0 +1,111 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  url: string;
+  category: string;
+  date: string;
+}
+
+const { title, excerpt, url, category, date } = Astro.props;
+---
+
+<article class="post-card">
+  <a href={url} class="card-link">
+    <div class="card-content">
+      <div class="card-meta">
+        <span class="category-badge">{category}</span>
+        <span class="post-date">{date}</span>
+      </div>
+      <h3 class="post-title">{title}</h3>
+      <p class="post-excerpt">{excerpt}</p>
+      <span class="read-more">Read Article &rarr;</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .post-card {
+    background: white;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-subtle);
+    transition: all var(--transition-speed) ease;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+  }
+
+  .card-link {
+    display: block;
+    color: inherit;
+  }
+
+  .card-link:hover {
+    color: inherit;
+  }
+
+  .card-content {
+    padding: 2rem;
+  }
+
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .category-badge {
+    background-color: var(--color-sand);
+    color: var(--color-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .post-date {
+    color: var(--color-text-muted);
+  }
+
+  .post-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    color: var(--color-text-main);
+    transition: color var(--transition-speed) ease;
+  }
+
+  .post-card:hover .post-title {
+    color: var(--color-primary);
+  }
+
+  .post-excerpt {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .read-more {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    transition: all var(--transition-speed);
+    display: inline-block;
+  }
+
+  .post-card:hover .read-more {
+    color: var(--color-secondary);
+    transform: translateX(4px);
+  }
+</style>

@@ -1,0 +1,203 @@
+---
+// Header Component
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">The Curious Explorer</a>
+    
+    <nav class="desktop-nav">
+      <ul class="nav-links">
+        <li class="has-dropdown">
+          <a href="/spiritual-growth">Spiritual Growth</a>
+          <ul class="dropdown">
+            <li><a href="/spiritual-growth/christian-lifestyle">Christian Lifestyle</a></li>
+            <li><a href="/spiritual-growth/sins-to-abhor">Sins to Abhor</a></li>
+            <li><a href="/spiritual-growth/gods-love">God's Love</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/physical-stewardship">Physical Stewardship</a>
+          <ul class="dropdown">
+            <li><a href="/physical-stewardship/nutrition">Nutrition</a></li>
+            <li><a href="/physical-stewardship/fitness">Fitness</a></li>
+            <li><a href="/physical-stewardship/rest">Rest</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/academic-growth">Academic Growth</a>
+          <ul class="dropdown">
+            <li><a href="/academic-growth/learning">Continuous Learning</a></li>
+            <li><a href="/academic-growth/focus">Focus & Discipline</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/mental-growth">Mental Growth</a>
+          <ul class="dropdown">
+            <li><a href="/mental-growth/mindfulness">Mindfulness</a></li>
+            <li><a href="/mental-growth/resilience">Resilience</a></li>
+            <li><a href="/mental-growth/relationships">Relationships</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="/financial-growth">Financial Growth</a>
+          <ul class="dropdown">
+            <li><a href="/financial-growth/stewardship">Stewardship</a></li>
+            <li><a href="/financial-growth/planning">Planning</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    
+    <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links > li > a {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  
+  .has-dropdown {
+    position: relative;
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--color-background);
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    min-width: 200px;
+    box-shadow: var(--box-shadow-hover);
+    border-radius: var(--border-radius-sm);
+    flex-direction: column;
+  }
+  
+  .has-dropdown:hover .dropdown {
+    display: flex;
+    animation: fadeIn 0.15s ease-out;
+  }
+  
+  .dropdown li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+  }
+  
+  .dropdown li a:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+  }
+  
+  .mobile-menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: 0.3s;
+  }
+  
+  @media (max-width: 900px) {
+    .desktop-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: var(--color-background);
+      padding: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      max-height: calc(100vh - 70px);
+      overflow-y: auto;
+    }
+    
+    .desktop-nav.is-open {
+      display: block;
+    }
+    
+    .nav-links {
+      flex-direction: column;
+    }
+    
+    .mobile-menu-toggle {
+      display: flex;
+    }
+    
+    .dropdown {
+      position: static;
+      box-shadow: none;
+      border-left: 2px solid var(--color-secondary);
+      margin-left: 1rem;
+      margin-top: 0.5rem;
+      padding-left: 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Setup mobile menu toggle logic
+  function setupMenu() {
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const nav = document.querySelector('.desktop-nav');
+    
+    if(toggle && nav) {
+      // Remove any previously attached listeners if executing again (e.g., view transitions)
+      const newToggle = toggle.cloneNode(true);
+      toggle.parentNode?.replaceChild(newToggle, toggle);
+      
+      newToggle.addEventListener('click', () => {
+        nav.classList.toggle('is-open');
+      });
+    }
+  }
+
+  // Run on first load
+  document.addEventListener('DOMContentLoaded', setupMenu);
+</script>

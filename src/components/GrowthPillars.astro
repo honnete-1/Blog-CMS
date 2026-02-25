@@ -1,0 +1,141 @@
+---
+const pillars = [
+  {
+    title: "Spiritual Growth",
+    description: "The root of our journey. Walking in faith, understanding God's love, and living a Christian lifestyle.",
+    icon: "✝️",
+    link: "/spiritual-growth",
+    color: "var(--color-primary)"
+  },
+  {
+    title: "Physical Stewardship",
+    description: "Honoring the temple. Nutrition, fitness, and rest for a thriving physical life.",
+    icon: "🏃",
+    link: "/physical-stewardship",
+    color: "#3F7A38"
+  },
+  {
+    title: "Academic Growth",
+    description: "Expanding the mind. Continuous learning, focus, and scholastic excellence.",
+    icon: "📚",
+    link: "/academic-growth",
+    color: "#548B4D"
+  },
+  {
+    title: "Mental Growth",
+    description: "Cultivating resilience. Mindfulness, emotional intelligence, and healthy relationships.",
+    icon: "🧠",
+    link: "/mental-growth",
+    color: "#6B9D65"
+  },
+  {
+    title: "Financial Growth",
+    description: "Wisdom with resources. Biblical stewardship, planning, and wealth building.",
+    icon: "📈",
+    link: "/financial-growth",
+    color: "#83AF7D"
+  }
+];
+---
+
+<section id="pillars" class="growth-pillars">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <h2>The Five Pillars of Growth</h2>
+      <p>Discover a balanced approach to your personal development.</p>
+    </div>
+    
+    <div class="pillars-grid">
+      {pillars.map((pillar, index) => (
+        <a href={pillar.link} class="pillar-card fade-in" style={`animation-delay: ${index * 0.1}s;`}>
+          <div class="pillar-icon" style={`color: ${pillar.color};`}>{pillar.icon}</div>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.description}</p>
+          <span class="explore-link">Explore &rarr;</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .growth-pillars {
+    padding: 6rem 0;
+    background-color: var(--color-background);
+  }
+
+  .section-header {
+    margin-bottom: 4rem;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  .section-header p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .pillar-card {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem 2rem;
+    box-shadow: var(--box-shadow-subtle);
+    transition: all var(--transition-speed) ease;
+    border-top: 4px solid transparent;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .pillar-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-hover);
+    border-color: var(--color-secondary);
+  }
+
+  .pillar-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pillar-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--color-text-main);
+  }
+
+  .pillar-card p {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    line-height: 1.6;
+  }
+
+  .explore-link {
+    font-weight: 600;
+    color: var(--color-secondary);
+    display: inline-flex;
+    align-items: center;
+    transition: transform var(--transition-speed) ease;
+  }
+
+  .pillar-card:hover .explore-link {
+    transform: translateX(5px);
+  }
+</style>

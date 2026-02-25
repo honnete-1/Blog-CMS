@@ -1,0 +1,88 @@
+/* Grounded Sage Palette */
+:root {
+  --color-forest: #2D5A27; /* Deep Forest Green */
+  --color-sand: #F5F5DC;   /* Warm Sand */
+  --color-gold: #D4AF37;   /* Gold Accent */
+  
+  --color-primary: var(--color-forest);
+  --color-secondary: var(--color-gold);
+  --color-background: var(--color-sand);
+  --color-text-main: #2c2c2c;
+  --color-text-muted: #5e5e5e;
+
+  /* Fonts */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', 'Lato', sans-serif;
+
+  /* Dynamic Design tokens */
+  --transition-speed: 0.3s;
+  --box-shadow-subtle: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --box-shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+}
+
+/* Reset & Utilities */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.75rem; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Micro-animations and Utilities */
+.fade-in {
+  animation: fadeIn var(--transition-speed) ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

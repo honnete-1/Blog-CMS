@@ -1,0 +1,68 @@
+---
+// Scripture Spotlight Component for Spiritual Growth 
+interface Props {
+  verse: string;
+  reference: string;
+}
+
+const { verse, reference } = Astro.props;
+---
+
+<div class="scripture-spotlight fade-in">
+  <div class="spotlight-icon">📖</div>
+  <blockquote class="spotlight-verse">"{verse}"</blockquote>
+  <cite class="spotlight-reference">— {reference}</cite>
+</div>
+
+<style>
+  .scripture-spotlight {
+    background: linear-gradient(145deg, var(--color-background) 0%, white 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-left: 6px solid var(--color-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 3rem 2rem;
+    text-align: center;
+    margin: 3rem 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scripture-spotlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(30%, -30%);
+  }
+
+  .spotlight-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+
+  .spotlight-verse {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .spotlight-reference {
+    font-weight: 600;
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+  }
+</style>

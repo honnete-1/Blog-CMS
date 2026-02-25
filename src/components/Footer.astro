@@ -1,0 +1,134 @@
+---
+// Footer Component
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <h3 class="logo-text">The Curious Explorer</h3>
+      <p>A holistic journey of personal growth, rooted in faith.</p>
+    </div>
+    
+    <div class="footer-verse">
+      <blockquote>
+        "But grow in the grace and knowledge of our Lord and Savior Jesus Christ. To him be the glory both now and to the day of eternity. Amen."
+      </blockquote>
+      <cite>— 2 Peter 3:18</cite>
+    </div>
+    
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/spiritual-growth">Spiritual</a></li>
+        <li><a href="/physical-stewardship">Physical</a></li>
+        <li><a href="/academic-growth">Academic</a></li>
+        <li><a href="/mental-growth">Mental</a></li>
+        <li><a href="/financial-growth">Financial</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {new Date().getFullYear()} The Curious Explorer. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-primary);
+    color: white;
+    padding-top: 4rem;
+    margin-top: 4rem;
+  }
+  
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .logo-text {
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+  }
+  
+  .footer-brand p {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+  }
+  
+  .footer-verse {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 2rem;
+  }
+  
+  .footer-verse blockquote {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+    color: var(--color-sand);
+    line-height: 1.5;
+  }
+  
+  .footer-verse cite {
+    font-size: 0.9rem;
+    color: var(--color-gold);
+  }
+  
+  .footer-links h4 {
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .footer-links a {
+    color: #e0e0e0;
+  }
+  
+  .footer-links a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  @media (max-width: 900px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 2rem;
+    }
+    
+    .footer-verse {
+      border: none;
+      padding: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem 0;
+    }
+  }
+</style>

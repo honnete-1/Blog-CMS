@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScriptureSpotlight from '../../components/ScriptureSpotlight.astro';
+import PostCard from '../../components/PostCard.astro';
+
+// Sub-categories defined in header
+const categories = [
+  {
+    title: "Christian Lifestyle",
+    description: "Living out your faith daily in everything you do, turning the mundane into acts of worship.",
+    url: "/spiritual-growth/christian-lifestyle"
+  },
+  {
+    title: "Sins to Abhor",
+    description: "Understanding and turning away from what separates us from God. Pursuing holiness.",
+    url: "/spiritual-growth/sins-to-abhor"
+  },
+  {
+    title: "God's Love",
+    description: "Basking in the unconditional love and grace of the Creator, the foundation of our identity.",
+    url: "/spiritual-growth/gods-love"
+  }
+];
+
+// Mock recent posts for this pillar
+const recentPillarPosts = [
+  {
+    title: "The Daily Habit of Gratitude",
+    excerpt: "How starting your day with thankfulness aligns your heart with God's will and transforms your perspective on trials.",
+    url: "/spiritual-growth/christian-lifestyle/daily-gratitude",
+    category: "Christian Lifestyle",
+    date: "August 20, 2026"
+  }
+];
+---
+
+<BaseLayout 
+  title="Spiritual Growth" 
+  description="The root of our journey: Walking in faith, understanding God's love, and living a Christian lifestyle."
+>
+  <div class="page-header pattern-bg">
+    <div class="container text-center fade-in">
+      <h1>Spiritual Growth</h1>
+      <p class="subtitle">The Root of Your Journey</p>
+    </div>
+  </div>
+
+  <div class="container main-content">
+    <div class="fade-in" style="animation-delay: 0.2s;">
+      <ScriptureSpotlight 
+        verse="Trust in the LORD with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths."
+        reference="Proverbs 3:5-6 (ESV)"
+      />
+    </div>
+    
+    <section class="sub-categories fade-in" style="animation-delay: 0.3s;">
+      <h2 class="section-heading text-center">Explore Topics</h2>
+      <div class="category-grid">
+        {categories.map((cat, index) => (
+          <a href={cat.url} class="cat-card">
+            <h3>{cat.title}</h3>
+            <p>{cat.description}</p>
+            <span class="explore-cat">Read more &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </section>
+    
+    <section class="recent-posts fade-in" style="animation-delay: 0.5s;">
+      <h2 class="section-heading">Latest in Spiritual Growth</h2>
+      <div class="posts-grid">
+        {recentPillarPosts.map(post => <PostCard {...post} />)}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 6rem 0 4rem;
+    margin-bottom: 3rem;
+  }
+  
+  .pattern-bg {
+    background: linear-gradient(135deg, rgba(45, 90, 39, 0.95), rgba(26, 60, 22, 0.98));
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pattern-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 20%);
+    background-size: 50px 50px;
+    z-index: 0;
+  }
+
+  .page-header > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-header h1 {
+    color: var(--color-gold);
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    font-weight: 300;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .main-content {
+    padding-bottom: 5rem;
+  }
+
+  .section-heading {
+    margin-bottom: 2.5rem;
+    color: var(--color-primary);
+    font-size: 2.25rem;
+  }
+  
+  .sub-categories {
+    margin: 5rem 0;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .cat-card {
+    display: block;
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-subtle);
+    transition: all var(--transition-speed);
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.03);
+    border-top: 4px solid var(--color-background);
+  }
+
+  .cat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+    border-top-color: var(--color-secondary);
+  }
+
+  .cat-card h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+  }
+
+  .cat-card p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .explore-cat {
+    color: var(--color-secondary);
+    font-weight: 600;
+    transition: transform var(--transition-speed);
+    display: inline-block;
+  }
+
+  .cat-card:hover .explore-cat {
+    transform: translateX(4px);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+  }
+</style>

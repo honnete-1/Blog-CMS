@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Sidebar from '../../../components/Sidebar.astro';
+
+export function getStaticPaths() {
+  return [
+    { 
+      params: { pillar: 'spiritual-growth', category: 'christian-lifestyle', post: 'daily-gratitude' },
+      props: { 
+        title: "The Daily Habit of Gratitude",
+        date: "August 20, 2026",
+        content: "Gratitude is more than an emotion; it is a discipline. When we thank God daily for His provisions, we align our hearts with His will. This simple act transforms how we perceive our circumstances, fostering peace amidst chaos."
+      }
+    },
+    { 
+      params: { pillar: 'mental-growth', category: 'mindfulness', post: 'finding-stillness' },
+      props: { 
+        title: "Finding Stillness in a Noisy World",
+        date: "August 15, 2026",
+        content: "The world is constantly competing for our attention. Finding stillness requires intentional isolation and disconnecting from the digital noise. It's in the quiet spaces that we hear ourselves and God the clearest."
+      }
+    },
+    {
+      params: { pillar: 'physical-stewardship', category: 'nutrition', post: 'basics' },
+      props: {
+        title: "Honoring Your Temple: Nutrition Basics",
+        date: "August 12, 2026",
+        content: "What we consume directly impacts our ability to serve effectively. Eating whole, unprocessed foods provides the energy required for our daily mission."
+      }
+    },
+    {
+      params: { pillar: 'academic-growth', category: 'focus', post: 'deep-work' },
+      props: {
+        title: "The Discipline of Deep Work",
+        date: "August 05, 2026",
+        content: "Applying extended periods of focused, deep work trains the brain for complex problem solving. It's a vital tool for academic and professional growth."
+      }
+    },
+    {
+      params: { pillar: 'spiritual-growth', category: 'christian-lifestyle', post: 'introduction-guide' },
+      props: {
+        title: "Understanding Christian Lifestyle",
+        date: "August 25, 2026",
+        content: "This is an introductory guide to the Christian Lifestyle. Let this serve as the foundation for your ongoing journey here."
+      }
+    },
+    {
+      params: { pillar: 'spiritual-growth', category: 'sins-to-abhor', post: 'introduction-guide' },
+      props: { title: "Understanding Sins to Abhor", date: "August 25, 2026", content: "This is an introductory guide to Sins to Abhor. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'spiritual-growth', category: 'gods-love', post: 'introduction-guide' },
+      props: { title: "Understanding God's Love", date: "August 25, 2026", content: "This is an introductory guide to God's Love. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'physical-stewardship', category: 'nutrition', post: 'introduction-guide' },
+      props: { title: "Understanding Nutrition", date: "August 25, 2026", content: "This is an introductory guide to Nutrition. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'physical-stewardship', category: 'fitness', post: 'introduction-guide' },
+      props: { title: "Understanding Fitness", date: "August 25, 2026", content: "This is an introductory guide to Fitness. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'physical-stewardship', category: 'rest', post: 'introduction-guide' },
+      props: { title: "Understanding Rest", date: "August 25, 2026", content: "This is an introductory guide to Rest. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'academic-growth', category: 'learning', post: 'introduction-guide' },
+      props: { title: "Understanding Continuous Learning", date: "August 25, 2026", content: "This is an introductory guide to Continuous Learning. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'academic-growth', category: 'focus', post: 'introduction-guide' },
+      props: { title: "Understanding Focus & Discipline", date: "August 25, 2026", content: "This is an introductory guide to Focus & Discipline. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'mental-growth', category: 'mindfulness', post: 'introduction-guide' },
+      props: { title: "Understanding Mindfulness", date: "August 25, 2026", content: "This is an introductory guide to Mindfulness. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'mental-growth', category: 'resilience', post: 'introduction-guide' },
+      props: { title: "Understanding Resilience", date: "August 25, 2026", content: "This is an introductory guide to Resilience. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'mental-growth', category: 'relationships', post: 'introduction-guide' },
+      props: { title: "Understanding Relationships", date: "August 25, 2026", content: "This is an introductory guide to Relationships. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'financial-growth', category: 'stewardship', post: 'introduction-guide' },
+      props: { title: "Understanding Biblical Stewardship", date: "August 25, 2026", content: "This is an introductory guide to Biblical Stewardship. Let this serve as the foundation for your ongoing journey here." }
+    },
+    {
+      params: { pillar: 'financial-growth', category: 'planning', post: 'introduction-guide' },
+      props: { title: "Understanding Financial Planning", date: "August 25, 2026", content: "This is an introductory guide to Financial Planning. Let this serve as the foundation for your ongoing journey here." }
+    }
+  ]
+}
+
+const { pillar, category } = Astro.params;
+const { title, date, content } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <article class="post-detail container">
+    <div class="post-main fade-in">
+      <header class="post-header">
+        <div class="post-meta">
+          <a href={`/${pillar}/${category}`} class="category-link">{category.replace('-', ' ').toUpperCase()}</a>
+          <span class="dot">&bull;</span>
+          <span class="date">{date}</span>
+        </div>
+        <h1 class="post-title">{title}</h1>
+      </header>
+      
+      <div class="post-body">
+        <p class="dropcap">{content}</p>
+        
+        <p>As we journey through this life, these principles hold true regardless of circumstance. The key is consistency and returning to the foundational truths when we drift away.</p>
+        
+        <blockquote>
+          "Excellence is not an act, but a habit."
+        </blockquote>
+        
+        <p>Let us endeavor to make growth a continuous pursuit rather than a destination. By taking small, faithful steps every day, we build a life that honors God and serves others.</p>
+      </div>
+    </div>
+    
+    <div class="post-sidebar fade-in" style="animation-delay: 0.2s;">
+      <div class="sticky-sidebar">
+        <Sidebar />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post-detail {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    padding: 5rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .post-header {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 2rem;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .category-link {
+    color: var(--color-secondary);
+  }
+  
+  .category-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-title {
+    font-size: 3.5rem;
+    color: var(--color-primary);
+    line-height: 1.1;
+  }
+
+  .post-body {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--color-text-main);
+  }
+  
+  .post-body p {
+    margin-bottom: 1.5rem;
+  }
+
+  .dropcap::first-letter {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    float: left;
+    margin-right: 0.5rem;
+    line-height: 0.8;
+    color: var(--color-primary);
+    margin-top: 0.5rem;
+  }
+
+  .post-body blockquote {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-style: italic;
+    color: var(--color-primary);
+    border-left: 4px solid var(--color-secondary);
+    padding-left: 2rem;
+    margin: 3rem 0;
+    line-height: 1.4;
+  }
+
+  .sticky-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  @media (max-width: 900px) {
+    .post-detail {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .post-title {
+      font-size: 2.5rem;
+    }
+    
+    .sticky-sidebar {
+      position: static;
+    }
+  }
+</style>
